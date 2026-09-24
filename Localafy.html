@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+              crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+              rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+
+        <title>Localafy</title>
+    </head>
+    <body class="bg page">
+        <script>
+            // just to scrol back to the top on start
+            if ('scrollRestoration' in history)
+            {
+                history.scrollRestoration = 'manual';
+            }
+        </script>
+        <header class="container-fluid rounded-4
+                       p-5 header border_glow d-flex flex-column
+                       flex-lg-row align-items-center align-items-start
+                       justify-content-between gap-4">
+            <div class="flex-grow-1">
+                <h1 class="title">Localafy</h1>
+                <p class="text">A programmer's headphones aren't for listening to music.</p>
+                <P class="text" >They are a universal warning system that translates to:</P>
+                <P class="text" style="color:#b8a5ff; font-weight : 550;">Unless the servers are on fire, do not speak to me.</P>
+                <div class="the_divider_line"></div>
+                <div class="box_for_bars">
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                    <span class="bars"></span>
+                </div>
+            </div>
+        <!--here will be 3d image with hover effect-->
+
+            <div class="tilet_cont" id="tilet_cont">
+                <img class="main_image rounded-2 img-fluid selec" src="chibi boy.png" draggable="false" id="main_image" >
+            </div>
+        </header>
+        <!--script for 3d stuff-->
+
+        <script>
+            // this is working a bit too well, nice for me. at the start it was just teleporting side ways, (doing 180° for each x and y )
+            const img = document.getElementById('main_image');
+            const container = document.getElementById('tilet_cont');
+            container.addEventListener('mousemove', function (e) {
+                const distance = container.getBoundingClientRect();
+                const x = e.clientX - distance.left
+                const y = e.clientY - distance.top
+                const center_y =  distance.height / 2
+                const center_x =  distance.width * 0.5
+                const mouse_x = x - center_x
+                const mouse_y = y - center_y
+                const tilet_x = (mouse_x / center_x) * 16.5 // for 15° may try 20. later, keep this so i can remmeber the original degree
+                const tilet_y = (mouse_y / center_y) * -16.5
+                img.style.transform = `rotateX(${tilet_y}deg) rotateY(${tilet_x}deg)`;
+            });
+            container.addEventListener('mouseleave', function (e) {
+                img.style.transform = `rotateX(${0}deg) rotateY(${0}deg)`;
+            })
+        </script>
+        <main>
+            <div  class="cover_holder">
+                <div class="cover_wrapper" style="position: relative">
+                    <img id="a" class="covers selec" src="https://i.ytimg.com/vi/VYSc1h8qkgg/maxresdefault.jpg"
+                         alt="Cover" draggable="false">
+                    <span class="cover_titles" >Sweater Weather</span>
+                </div>
+                <div class="cover_wrapper" style="position: relative">
+                    <img id="b"class="covers selec"
+                         src="https://i.ytimg.com/vi/gFMXsstUQPE/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&rs=AOn4CLA_RImzNv0p9j7mciz49acs0uEwBg"
+                         alt="Cover" draggable="false">
+                    <span class="cover_titles" >Royalty</span>
+                </div>
+                <div class="cover_wrapper"  style="position: relative">
+                    <img id="c" class="covers selec"
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm517OnOxUtUezDGyQLGE_MZTZ7RG8Zln0n68ck1MBTC-x9cpAhMk3zvWV&s=10"
+                         alt="Cover" draggable="false">
+                    <span class="cover_titles" >Second place effect</span>
+                </div>
+                <div class="cover_wrapper"  style="position: relative">
+                    <img id="d" class="covers selec"
+                         src="https://i.ytimg.com/vi/EKkzbbLYPuI/maxresdefault.jpg"
+                         alt="Cover" draggable="false">
+                    <span class="cover_titles" >Carol of the bells</span>
+                </div>
+                <div class="cover_wrapper"  style="position: relative">
+                    <img id="e" class="covers selec"
+                         src="https://i.ytimg.com/vi/ZbXvGgCTYYw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDdFzpozPFioWtoRqUFnWnMFpsmYg"
+                         alt="Cover" draggable="false">
+                    <span class="cover_titles" >Only temporary</span>
+                </div>
+            </div>
+        </main>
+    <!--this is the panle that pop (when click image 2 times). btw the first div is the full structre-->
+        <div class="panle_overlay selec">
+            <div class="panle">
+                <header>
+                    <div class="buttons_holder">
+                        <button id="close_b" class="button_x">
+                            <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10,10 L22,22 M22,10 L10,22"/>
+                            </svg>
+                        </button>
+                        <button id="min_b" class="button_min">
+                            <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23,20.8 L23,12.5 A3.5,3.5 0 0 0 19.5,9 L12.5,9 A3.5,3.5 0 0 0 9,12.5 L9,19.5 A3.5,3.5 0 0 0 12.5,23 L20.2,23"/>
+                                <rect x="11.3" y="11.3" width="4.8" height="4.8" rx="1.3"/>
+                                <path d="M16.4,16.4 L26.4,26.4 M26.4,26.4 L26.4,21.15 M26.4,26.4 L21.15,26.4"/>
+                            </svg>
+                        </button>
+                    </div>
+                </header>
+                <main style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div class="side_panle container-fluid rounded-end-4 align-items-start justify-content-start gap-4">
+                        <!--this is the place for other songs where you can select themm from the side bar-->
+                        <button class="side_bar_button" id="btnExpand" aria-label="Expand" aria-expanded="false">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="25" height="35">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+                        <h3 class="side_bar_title" id="s">Queue</h3>
+                        <div class="next_songs"></div>
+                        <div class="beats_father">
+                            <div class="elden_rings">
+                                <img src="https://i.ytimg.com/vi/VYSc1h8qkgg/maxresdefault.jpg" class="expaned_img selec" draggable="false">
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <div class="mini_panle_overlay selec">
+                <div class="mini_img_holder" style="border: none;">
+                    <img class="mini_image selec" src="" draggable="false">
+                    <button class="mini_close_button">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10,10 L22,22 M22,10 L10,22"/>
+                        </svg>
+                    </button>
+                    <button class="mini_expand_button">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9,11.2 L9,19.5 A3.5,3.5 0 0 0 12.5,23 L19.5,23 A3.5,3.5 0 0 0 23,19.5 L23,12.5 A3.5,3.5 0 0 0 19.5,9 L11.8,9"/>
+                            <rect x="16.0" y="16.0" width="4.8" height="4.8" rx="1.3"/>
+                            <path d="M5.6,5.6 L15.7,15.7 M5.6,5.6 L5.6,10.85 M5.6,5.6 L10.85,5.6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <footer class="play_bar">
+                <div class="slider_t_con">
+                    <input type="range" class="native-range" id="time" min="0" max="100" value="0" step="0.01">
+                    <div class="track-base"></div>
+                    <div class="track-buffered"></div>
+                    <div class="track-played"></div>
+                    <div class="scrubber-ball"></div>
+                    <div class="tooltip" style="display: none;"></div>
+                </div>
+                <div class="bar_left">
+                    <button class="prev_button" aria-label="Previous">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="6" y="5" width="2.4" height="14" rx="1"/>
+                            <path d="M18 5.5 8.5 12 18 18.5Z"/>
+                        </svg>
+                    </button>
+                    <button class="play_button" aria-label="Play">
+                        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="currentColor" width="48px" height="48px" >
+                            <path d="M10 8h6v20h-6zM20 8h6v20h-6z"/>
+                        </svg>
+                        <svg id="pause-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="currentColor" width="40px" height="40px" style="display: none;">
+                            <path d="M9 6v24l21-12z"/>
+                        </svg>
+                    </button>
+                    <button class="next_button" aria-label="Next">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="15.6" y="5" width="2.4" height="14" rx="1"/>
+                            <path d="M6 5.5 15.5 12 6 18.5Z"/>
+                        </svg>
+                    </button>
+                    <div class="time_display">0:00</div>
+                </div>
+                <div class="bar_center">
+                    <img class="center_bar_img selec" src="" id="center_bar_img"  draggable="false">
+                    <div class="center_bar_text">
+                        <div class="song_title" style="font-weight: bold; color: White;">Song Title</div>
+                        <div class="song_artist">Artist Name</div>
+                    </div>
+                    <button class="favrote_button" aria-label="Favorite">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="bar_right">
+                    <div class="volum_con">
+                        <input type="range" class="slider_v" id="volum" min="0" max="100" value="75">
+                        <button class="volum_butten" aria-label="Volume" fill="#cbd5e1"> <!--the misselling is too deep to remove now sorry-->
+                            <svg id="unmutted" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#cbd5e1">
+                                <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+                                <path d="M16.5 12c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.73 2.5-2.25 2.5-4.02z"/>
+                                <path d="M14 3.23v2.06c2.89 0.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-0.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                            </svg>
+                            <svg id="mutted"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#cbd5e1">
+                                <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+                                <path d="M16.5 12c0-1.77-1-3.29-2.5-4.03v2.21l2.45 2.45c.03-0.2.05-0.41.05-0.63z"/>
+                                <path d="M19 12c0 0.94-0.2 1.82-0.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89 0.86 5 3.54 5 6.71z"/>
+                                <path d="M4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-0.67 0.52-1.42 0.93-2.25 1.18v2.06c1.38-0.31 2.63-0.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4l-1.73 1.73L12 7.46V4z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="repeat_button" aria-label="Repeat">
+                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 2l4 4-4 4"/>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                            <path d="M7 22l-4-4 4-4"/>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                        </svg>
+                    </button>
+                    <button class="shuffle_button" aria-label="Shuffle">
+                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"/>
+                            <path d="M4 20L21 3"/>
+                            <path d="M21 16v5h-5"/>
+                            <path d="M4 4l5 5"/>
+                        </svg>
+                    </button>
+                </div>
+            </footer>
+            <script>
+                let reverting = false; // so the audio does't rest each ime you revert to the image.
+                let mini_panle = false;
+                let enlarged = null;
+                let img_playing = null; // so when you click the cover being played it doesn't restart the audio
+                const wrappers = document.querySelectorAll('.cover_wrapper');
+                wrappers.forEach( function(c)
+                    {
+                        c.addEventListener("click", function(event)
+                            {
+                                if (enlarged != event.currentTarget)
+                                {
+                            // console.log(event.currentTarget)
+                                    revert_img();
+                                    enlarged = event.currentTarget;
+                                    let img = enlarged.querySelector('img');
+                                    let text = enlarged.querySelector('.cover_titles');
+                                    img.className = 'pop_cover selec';
+                                    text.classList.add('visible');
+                                }
+                                else if (enlarged == event.currentTarget)
+                                {
+                                    let img = enlarged.querySelector('img');
+                                    overlay_expand(img);
+                                }
+                            })
+                    })
+                document.addEventListener("click", function(e)
+                    {
+                        if (enlarged != null && !enlarged.contains(e.target))
+                        {
+                            revert_img();
+                        }
+
+                    })
+                async function overlay_expand(img)
+                {
+                    pages = document.getElementById("hide_me");
+                    pages.style.pointerEvents = "none";
+                    pages.style.opacity = "0";
+                    if (mini_panle)
+                    {
+                        mini_panle = false;
+                        mini_panle_hider();
+                    }
+                    if (!reverting && img_playing !== img)
+                    {
+                        music_player(img);
+                        reverting = false;
+                    }else if (reverting)
+                    {
+                        reverting = false;
+                    }
+                    await audio_content.resume();
+                    update_favrote_button(img);
+                    img_playing = img;
+                    let play_bar = document.querySelector('.play_bar');
+                    let expaned_img = document.querySelector('.expaned_img');
+                    let x = document.querySelector('#close_b');
+                    let min = document.querySelector('#min_b');
+                    let body = document.querySelector('body');
+                    let overlay = document.querySelector('.panle_overlay');
+                    let bar_center_img = document.querySelector('#center_bar_img');
+                    bar_center_img.src = img.src;
+                    play_bar.classList.add('visible');
+                    body.style.overflow = 'hidden';
+                    overlay.classList.add('visible');
+                    expaned_img.src = img.src;
+                    x.onclick = closer;
+                    min.onclick = (e) => minimize(img);
+                }
+                function revert_img()
+                {
+                    if (enlarged != null )
+                    {
+                        let img  = enlarged.querySelector('img');
+                        let text = enlarged.querySelector('.cover_titles');
+                        img.className = 'covers selec';
+                        text.classList.remove('visible');
+                        enlarged = null;
+                    }
+                }
+                function closer()
+                {
+                    audio_stopper();
+                    let body = document.querySelector('body');
+                    let overlay = document.querySelector('.panle_overlay');
+                    let play_bar = document.querySelector('.play_bar');
+                    body.style.overflow = 'visible';
+                    body.style.overflowX = 'hidden';
+                    overlay.classList.remove('visible');
+                    play_bar.classList.remove('visible');
+                    img_playing = null;
+                    audio_is_playing = false;
+                    pages = document.getElementById("hide_me");
+                    pages.style.pointerEvents = "auto";
+                    pages.style.opacity = "1";
+                }
+                function mini_revert(img)
+                {
+                    reverting = true;
+                    mini_panle = false;
+                    let mini_overlay = document.querySelector('.mini_panle_overlay');
+                    mini_overlay.classList.remove('visible');
+                    overlay_expand(img);
+                }
+                function mini_panle_hider()
+                {
+                    let mini_overlay = document.querySelector('.mini_panle_overlay');
+                    let play_bar = document.querySelector('.play_bar');
+                    mini_panle = false;
+                    mini_overlay.classList.remove('visible');
+                    play_bar.classList.remove('visible');
+                }
+                function mini_close_f()
+                {
+                    let mini_overlay = document.querySelector('.mini_panle_overlay');
+                    let play_bar = document.querySelector('.play_bar');
+                    mini_panle = false;
+                    audio_stopper()
+                    mini_overlay.classList.remove('visible');
+                    play_bar.classList.remove('visible');
+                    img_playing = null;
+                    audio_is_playing = false;
+                    let pages = document.getElementById("hide_me");
+                    pages.style.pointerEvents = "auto";
+                    pages.style.opacity = "1";
+                }
+                function minimize(img)
+                {
+                    mini_panle = true;
+                    let mini_img = document.querySelector('.mini_image');
+                    let body = document.querySelector('body');
+                    let overlay = document.querySelector('.panle_overlay');
+                    let mini_overlay = document.querySelector('.mini_panle_overlay');
+                    mini_img.src = img.src;
+                    if (img_playing !== img)
+                    {
+                        mini_img.src = img_playing.src;
+                    }
+                    body.style.overflow = 'visible';
+                    body.style.overflowX = 'hidden';
+                    overlay.classList.remove('visible');
+                    mini_overlay.classList.add('visible');
+                    let mini_close = document.querySelector('.mini_close_button');
+                    mini_img.onclick = (e) =>
+                    {
+                        mini_revert(img);
+                    }
+                    mini_close.onclick = (e) =>
+                    {
+                        mini_close_f();
+                    }
+                    let mini_expand = document.querySelector('.mini_expand_button');
+                    mini_expand.onclick = (e) =>
+                    {
+                        mini_revert(img);
+                    }
+                }
+            </script>
+            <script>
+                // Volume silder ig. (same globale varibles used for audio player)
+                let volum_button = document.querySelector('.volum_butten');
+                const volum_con = document.querySelector('.volum_con');
+                const volum_slider = document.querySelector('.slider_v');
+                volum_button.addEventListener('mouseenter', function() {
+
+                    volum_slider.classList.add('visible');
+                    if (volum_con.matches(':hover'))
+                    {
+                        volum_slider.classList.add('visible');
+                    }
+                })
+                volum_con.addEventListener('mouseleave', function() {
+                    if (!volum_con.matches(':hover'))
+                    {
+                        volum_slider.classList.remove('visible');
+                    }
+                })
+                // Timer and native bar hider, and updater
+                let time_slider = document.querySelector('.native-range');
+                let track_played = document.querySelector('.track-played');
+                let track_buffered = document.querySelector('.track-buffered');
+                let tooltip = document.querySelector('.tooltip');
+                let scrubberBall = document.querySelector('.scrubber-ball');
+                track_buffered.style.width = '100%';
+                function updateTimeSlider()
+                {
+                    const value = Number(time_slider.value);
+                    const max = 100;
+                    const percent = (value / max) * 100;
+                    track_played.style.width = percent + '%';
+                    scrubberBall.style.left = percent + '%';
+                    tooltip.textContent = value + '%';
+                    tooltip.style.left = percent + '%';
+                }
+                time_slider.addEventListener('input', updateTimeSlider);
+                let side_bar_buttons = document.querySelector('.side_bar_button');
+                side_bar_buttons.addEventListener('click', function() {
+                    side_bar_buttons.classList.toggle('mini');
+                    let side_bar_songs = document.querySelectorAll('.side_bar_songs');
+                    let side_bar_title = document.querySelector('#s');
+                    let side_panle = document.querySelector('.side_panle');
+                    let next_songs = document.querySelector('.next_songs');
+                    side_panle.classList.toggle('minimized');
+                    side_bar_title.classList.toggle('mini');
+                    next_songs.classList.toggle('mini');
+                    side_bar_songs.forEach(function(song) {
+                        song.classList.toggle('mini');
+                    });
+                });
+            </script>
+            <script>
+                let maximum = 60;
+                const elden_rings = document.querySelector('.elden_rings');
+                let x,y,degree, bars_cont =  100;
+                const bars = [];
+                let expand_img = document.querySelector('.expaned_img');
+                for (let i = 0; i< bars_cont; i++)
+                {
+                    const ring = document.createElement('div');
+                    ring.classList.add('elden_rings_bars');
+                    let angle_red = (i / bars_cont) * Math.PI*2 - Math.PI/2;  // 360 * 2 and also rad not degree yet. good to know.....after 2 h.
+                    degree = angle_red * 180 / Math.PI + 90; // rad to degree? here--->>> 1rad × 180/π = 57.296° idk google say it's like this. and the 90 so i start from up, like the head of a tringle. (sorry i suck at speeling)
+                    x = Math.cos(angle_red) * expand_img.width   * 0.523; //x = Math.cos(angle_red) * 220; //goal
+                    y = Math.sin(angle_red) * expand_img.height  * 0.523;  //y = Math.sin(angle_red) * 220; //goal
+                    ring.style.transform = `translate(${x}px, ${y}px) rotate(${degree}deg)`;
+                    elden_rings.appendChild(ring);
+                    bars.push(ring);
+                }
+                update_bars();
+                expand_img.addEventListener('load', function() {
+                    update_bars();
+                });
+                window.addEventListener('resize', update_bars);
+                function update_bars()
+                {
+
+                    for (let i = 0; i< bars_cont; i++)
+                    {
+                        const ring = bars[i];
+                        let angle_red = (i / bars_cont) * Math.PI*2 - Math.PI/2;  // 360 * 2 and also rad not degree yet. good to know.....after 2 h.
+                        degree = angle_red * 180 / Math.PI + 90; // rad to degree? here--->>> 1rad × 180/π = 57.296° idk google say it's like this. and the 90 so i start from up, like the head of a tringle. (sorry i suck at speeling)
+                        x = Math.cos(angle_red) * expand_img.width   * 0.523;
+                        y = Math.sin(angle_red) * expand_img.height  * 0.523;  // 0.523 is the best i found to fit for bigger screens, and it works ell for small ones, at 1080*1920 px screen i got around 0.6 cm space btween the image and the bar to the right, wehn zoomed in max with browser zoom.
+                        ring.style.transform = `translate(${x}px, ${y}px) rotate(${degree}deg)`;
+                    }
+                    maximum = Math.floor(expand_img.width * 0.225);
+                    if (maximum < 50 && maximum > 25)
+                    {
+                        maximum = maximum * 0.9;
+                    } else if (maximum > 70)
+                    {
+                        maximum = maximum * 0.7;
+                    } else if (maximum < 20)
+                    {
+                        maximum = 50;
+                    }
+                }
+            //let frame_count = 0;
+                function height()
+                {
+                //frame_count = (frame_count + 1) % 60;
+                    ANA1.getByteFrequencyData(freq_data)
+                    bars.forEach((bar, i) => /// BIGGG NOTE this algorithm is not perfect but it's good across may songs, my play list has 5 songs, and they are very diffrent, some are load some are low, there is also, slow, long, fast, and unprodictibale songs (like sweater weather) so nice this works aross all of them with a good sync i say it's good enough, but i would have loved if i had more contolre over theinfo am getting, but i will stop here since this took way longer then it shoud have (not the this part, it was ez, i mean the whole web)
+                        {
+                            let index = Math.floor(2 * i);
+                            if (index < 1)
+                            {
+                                index = 1
+                            }
+                            else if  (index > length)
+                            {
+                                index = length - 1;
+                            }
+                            let bar_value =  (freq_data[index-1] + freq_data[index] + freq_data[index+1] ) * 0.35 / 3;
+                            if (bar_value > maximum)
+                            {
+                                bar_value = maximum + bar_value / 5 ;
+                            }
+                            bar_value = bar_value / 74;
+                            if (bar_value > 0.5)
+                            {
+                                bar_value = bar_value **4;
+                            }
+                            else {
+                                bar_value = bar_value  **5;
+                            }
+                            bar_value = bar_value * 95;
+                            if (audio.volume < 50)
+                            {
+                                bar_value = bar_value + 10 / (audio.volume+1);
+                            }
+                            if (audio.volume > 90)
+                            {
+                                bar_value = bar_value - 5 / (audio.volume+1);
+                            }
+
+                            if (i < 15)
+                            {
+                                if (bar_value > 25)
+                                {bar_value = bar_value / 4;}
+                            }
+                            if (bar_value < 5)
+                            {
+                                bar_value = bar_value + 2;
+                            }
+                            bar.style.height = bar_value + 'px';
+                        });
+                    requestAnimationFrame(height);
+                }
+            </script>
+            <!--Now the audio from the csv file with the id being a-e for each song in order.-->
+            <audio id="audio" preload="metadata" ></audio>
+            <script>
+            //audio related stuff
+                let next_song_loading = false;
+                let audio = document.getElementById('audio');
+                const audio_content = new AudioContext();
+                const ANA1 = audio_content.createAnalyser(); // ANA1 is the name of my real analysise coures at university....just change to song_analayers if you wish. (i won't change it because i like it)
+                const source = audio_content.createMediaElementSource(audio); //
+                source.connect(ANA1);
+                ANA1.connect(audio_content.destination);
+                ANA1.fftSize = 8192 //Fast Fourier Transform, from what i got this gets me the number of audio parts or "slices" as it's called, and it must be a power of 2. i say ...32 ? may cahnge it later if it matterd too much
+            // ok, i got it, since my work flow will need 100 chunks, i need to use 256 or 512 or 1024 since after / 2 i get half. to be safe made it 512
+                let queue_updater_request_id = 0; // request id to prevent spam attack currption (yes i was spaming next cuz the change in image was cool...)
+                let volum_slider_muted_value;
+                let music_img;
+                let audio_is_playing = false;
+                let audio_paused = false;
+                let array = [];
+                let order_array = ['0','1','2','3','4'];
+                let pause_button = document.querySelector('.play_button');
+                let prev_button = document.querySelector('.prev_button');
+                let next_button = document.querySelector('.next_button');
+                let shuffle_button = document.querySelector('.shuffle_button');
+                let repeat_button = document.querySelector('.repeat_button');
+                let number = 0;
+                let favrote_button = document.querySelector('.favrote_button');
+                const length = ANA1.frequencyBinCount; // around 256 i believe, just 512/2
+                const freq_data = new Uint8Array(length); // freq from 0-255 is the range i found.
+                const bar_to_bar_chunk_length = length / bars_cont;
+                async function database()
+                {
+                    const file = await fetch('database.psv');
+                    const text = await file.text();
+                    const lines = text.trim().split('\n');
+                    for (let i = 1; i < lines.length; i++)
+                    {
+                        let parts = lines[i].split('|');
+                        array.push({ // id,title,artist,file
+                            "id": parts[0],
+                            "title": parts[1],
+                            "artist": parts[2],
+                            "file": parts[3]
+                        });
+                    }}
+                function get_song_postion(id)
+                {
+                    for (let i = 0; i < array.length; i++)
+                    {
+                        if (array[i].id === id)
+                        {
+                            return i;
+                        }
+                    }
+                    return -1;
+                }
+                database();
+                async function music_player(img)
+                {
+                    next_song_loading = true;
+                    music_img = img;
+                    await audio_stopper();
+                    audio_is_playing = true;
+                    audio_paused = false;
+                    let start_time = 0;
+                    let id = img.id;
+                    let index = get_song_postion(id);
+                    let song_title = document.querySelector('.song_title');
+                    let song_artist = document.querySelector('.song_artist');
+                    if (index === -1)
+                    {
+                        return;
+                    }
+                    song_title.textContent = array[index].title;
+                    song_artist.textContent = array[index].artist;
+                    audio.src = array[index].file;
+                    audio.currentTime = start_time;
+                    await audio.play();
+                    next_song_loading = false;
+                    requestAnimationFrame(audio_to_slider_time_sync);  // sync at boot
+                    requestAnimationFrame(height);
+                    if (queue_updater_request_id === 0)
+                    {
+                        await queue_updater(index);
+                    }
+                    audio.onended = function()
+                    {
+                        audio_is_playing = false;
+                        audio_paused = false;
+                        play_next();
+                    };
+                }
+
+
+            // end of this function
+
+            // cookies :].
+                function get_cookies_matching()
+                {
+                    const cookie_sting = document.cookie.match(/(?:^|;\s*)favrote=([^;]*)/);
+                    if (cookie_sting)
+                    {
+                        return  cookie_sting[1];
+                    }
+                    else {
+                        document.cookie = "favrote=00000;";
+                        return "00000"; // default value if cookie not found, idk, it could happen ig.
+                    }
+                }
+
+                function into_array(str)
+                {
+                    let array = [];
+                    for (let i = 0; i < str.length; i++)
+                    {
+                        array[i] = str[i];
+                    }
+                    return array;
+                }
+
+                function update_favrote_button(img)
+                {
+                    let number = id_to_number(img.id);
+                    let tmp =  get_cookies_matching();
+                    tmp = into_array(tmp);
+                    if (tmp[number] === '1')
+                    {
+                        favrote_button.classList.add('clicked');
+                    }
+                    else {
+                        favrote_button.classList.remove('clicked');
+                    }
+                }
+
+            // event listerners for the buttons
+                pause_button.addEventListener('click', pause_audio);
+                next_button.addEventListener('click', play_next);
+                shuffle_button.addEventListener('click', shuffle);
+                repeat_button.addEventListener('click', repeat);
+                volum_button = document.querySelector('.volum_butten');
+                favrote_button.addEventListener('click', function() {
+                    let number = id_to_number(img_playing.id);
+                    let tmp =  get_cookies_matching();
+                    tmp = into_array(tmp); // logice is correct and tested , so .... maybe the updater is worng?
+                    if (tmp[number] === '0')
+                    {
+                        tmp[number] = '1';
+                        tmp = tmp.join('');
+                        document.cookie = 'favrote=' +  tmp  + ';';
+                    }
+                    else {
+                        tmp[number] = '0';
+                        tmp = tmp.join('');
+                        document.cookie = 'favrote=' +  tmp  + ';';
+                    }
+                    update_favrote_button(img_playing);
+                });
+                volum_button.addEventListener('click', function() {
+                    let  unmuted_icon = document.getElementById('unmutted');
+                    let  muted_icon = document.getElementById('mutted');
+                    if (audio.volume > 0)
+                    {
+                        muted_icon.style.display = "inline";
+                        unmuted_icon.style.display = "none";
+                        audio.volume = 0;
+                        volum_slider_muted_value = volum_slider.value;
+                        volum_slider.value = 0;
+                    } else {
+                        muted_icon.style.display = "none";
+                        unmuted_icon.style.display = "inline";
+                        audio.volume = volum_slider_muted_value / 100;
+                        volum_slider.value = volum_slider_muted_value;
+                    }
+                });
+                prev_button.addEventListener('click', function() {
+                    if (audio.currentTime < 3)
+                    {
+                        play_prev();
+                    } else {
+                        audio.currentTime = 0;
+                    }
+                });
+
+            //end of them
+
+                async function pause_audio()
+                {
+                    let play_icon = document.getElementById('play-icon');
+                    let pause_icon = document.getElementById('pause-icon');
+                    if (audio_paused)
+                    {
+                        play_icon.style.display  = "inline"
+                        pause_icon.style.display = "none"
+                        audio.play();
+                        audio_paused = false;
+                    } else {
+                        play_icon.style.display  = "none"
+                        pause_icon.style.display = "inline"
+                        audio.pause();
+                        audio_paused = true;
+                    }
+                }
+                async function audio_stopper()
+                {
+                    if (audio_is_playing)
+                    {
+                        queue_updater_request_id = 0; // reset the request id so the queue updates
+                        audio.pause();
+                        audio.currentTime = 0;
+                        audio_is_playing = false;
+                    }
+                }
+                let isdragging = false;
+                let time_display = document.querySelector('.time_display'); // native range is declared up with the golobal name time_slider
+            //audio.addEventListener('timeupdate', function()
+               // {
+
+                //});
+                async function audio_to_slider_time_sync() // needed for smooth animation, of the slider.buffer
+                {
+                    if (next_song_loading)
+                    {
+                        return;
+                    }
+                    if (!isdragging)
+                    {
+                        let currentTime = audio.currentTime;
+                        nativeTime_music = (currentTime / audio.duration) * 100;
+                        time_slider.value = nativeTime_music;
+                    }
+                    requestAnimationFrame(audio_to_slider_time_sync);
+                    updateTimeSlider();
+                }
+                time_slider.addEventListener('input', function ()
+                    {
+                        isdragging = true;
+                    });
+                time_slider.addEventListener('change', function ()
+                    {
+                        isdragging = false;
+                        if (!isdragging)
+                        {
+                            audio.currentTime = Number(time_slider.value) / 100  * audio.duration;
+                        }
+                    });
+                audio.volume = volum_slider.value / 100; // sync at load&
+                volum_slider.addEventListener('input', function()
+                    {
+                        audio.volume = volum_slider.value / 100;
+                        if ((volum_slider.value / 100) === 0)
+                        {
+                            let  unmuted_icon = document.getElementById('unmutted');
+                            let  muted_icon = document.getElementById('mutted');
+                            muted_icon.style.display = "inline";
+                            unmuted_icon.style.display = "none";
+                        }
+                        else
+                        {
+                            let  unmuted_icon = document.getElementById('unmutted');
+                            let  muted_icon = document.getElementById('mutted');
+                            muted_icon.style.display = "none";
+                            unmuted_icon.style.display = "inline";
+                        }
+                    });
+
+                time_display.textContent = '0:00';
+                audio.addEventListener('timeupdate', function()
+                    {
+                        let currentTime = audio.currentTime;
+                        let minutes = Math.floor(currentTime / 60);
+                        let seconds = Math.floor(currentTime % 60);
+                        if (seconds < 10) {
+                            seconds = '0' + seconds;
+                        }
+                        time_display.textContent = minutes + ':' + seconds;
+                    });
+
+            // intractive buttons
+                async function play_next()
+                {
+                    let order_position;
+                    let id = img_playing.id;
+                    let index = get_song_postion(id); // you won't believe how many consle log was in here lol.
+                    if (index === -1)
+                    {
+                        console.error('song not found');
+                        return;
+                    }
+                    for (let i = 0; i < order_array.length; i++)
+                    {
+                        if (order_array[i] == index)
+                        {
+                            order_position = i;
+                            break;
+                        }
+                    }
+
+                    order_position++; // HAAY THE INCREASE IS HERE!!!!
+                    if (order_position > 4)
+                    {
+                        order_position = 0;
+                    }
+                    let safeguard = order_position;
+                    id = number_to_id(order_array[order_position]);
+                    img_playing = document.getElementById(id);
+                    update_favrote_button(img_playing);
+                    await quick_img_changer(document.getElementById(id));
+                    await music_player(document.getElementById(id));
+                    await queue_updater(order_position);
+                }
+                async function play_prev()
+                {
+                    let order_position;
+                    let id = img_playing.id;
+                    let index = get_song_postion(id);
+                    if (index === -1)
+                    {
+                        console.error('Song not foud');
+                        return;
+                    }
+                    for (let i = 0; i < order_array.length; i++)
+                    {
+                        if (order_array[i] == index)
+                        {
+                            order_position = i;
+                            break;
+                        }
+                    }
+
+                    order_position--; // HAAY THE DEINCREASE IS HERE!!!!
+
+                    if (order_position < 0)
+                    {
+                        order_position = 4;
+                    }
+                    id = number_to_id(order_array[order_position])
+                    img_playing = document.getElementById(id);
+                    update_favrote_button(img_playing);
+                //console.log('favorite button updating? here is the cookie' + document.cookie);
+                //let fav = document.querySelector('.favrote_button');
+                // console.log('favorite button updating? here is the classlist' + fav.classList);
+                    await quick_img_changer(document.getElementById(id));
+                    await music_player(document.getElementById(id));
+                    await queue_updater(order_position);
+                }
+                async function shuffle()
+                {   // just going to random the order array. (I miss python random shuffle)
+
+                    for (let i = order_array.length - 1; i > 0; i--)
+                    {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [order_array[i], order_array[j]] = [order_array[j], order_array[i]];
+                    }
+                    let order_position;
+                    let id = img_playing.id;
+                    let index = get_song_postion(id); // you won't believe how many consle log was in here lol.
+                    if (index === -1)
+                    {
+                        console.error('song not found');
+                        return;
+                    }
+                    await (async () => {
+                        order_position = await get_song_order_index(id);
+                    })();
+                    await queue_updater(order_position);
+                }
+                async function repeat()
+                {
+                    audio.currentTime = 0;
+                    await audio.play();
+                }
+                function number_to_id(number)
+                {
+                    switch(number) // it the songs were too many i can just do math with ASCII
+                    {
+                        case '0':
+                            return 'a';
+                        case '1':
+                            return 'b';
+                        case '2':
+                            return 'c';
+                        case '3':
+                            return 'd';
+                        case '4':
+                            return 'e';
+                        default:
+                            return null;
+                    }
+                }
+                function id_to_number(id)
+                {
+                    switch(id) // it the songs were too many i can just do math with ASCII
+                    {
+                        case 'a':
+                            return '0';
+                        case 'b':
+                            return '1';
+                        case 'c':
+                            return '2';
+                        case 'd':
+                            return '3';
+                        case 'e':
+                            return '4';
+                        default:
+                            return null;
+                    }
+                }
+                async function get_song_order_index(id)
+                {
+                    let index = get_song_postion(id);
+                    let order_position;
+                    if (index === -1)
+                    {
+                        console.error('song not found.');
+                        return;
+                    }
+                    for (let i = 0; i < order_array.length; i++)
+                    {
+                        if (order_array[i] == index)
+                        {
+                            order_position = i;
+                            break;
+                        }
+                    }
+                    return order_position;
+                }
+                async function quick_img_changer(img)
+                {
+                    let center_bar_img = document.querySelector('#center_bar_img');
+                    let expand_img = document.querySelector('.expaned_img');
+                    let mini_img = document.querySelector('.mini_image');
+                    mini_img.src = img.src;
+                    center_bar_img.src = img.src;
+                    expand_img.src = img.src;
+                    img_playing = img;
+                }
+            // ctrl + f short  cut
+                async function queue_updater(order_pos)
+                {
+                    let song_animation_bar = [];
+                // index is the curret song index in order array
+                    let next_songs_container = document.querySelector('.next_songs');
+                    let side_bar_songs = document.querySelectorAll('.side_bar_songs');
+                    const current_queue_id = queue_updater_request_id + 1;
+                    side_bar_songs = document.querySelectorAll('.side_bar_songs');
+                    queue_updater_request_id++;
+                    if (current_queue_id !== queue_updater_request_id)
+                    {
+                        return;
+                    }
+                    if (next_songs_container)
+                    {
+                        next_songs_container.innerHTML = '';
+                    }
+                    let j = 0;
+                    let next_order_pos = Number(order_pos) + 1;
+                    let len = order_array.length
+                    for (let i = 0; i < len; i++)
+                    {
+                        j = i + Number(next_order_pos);
+                        if (Number(j) > 4)
+                        {
+                            j = j - 5;
+                        };
+                        if (current_queue_id !== queue_updater_request_id)
+                        {
+                            return;
+                        }
+                        let song = document.createElement('p');
+                        song.style.opacity = '0';
+                        song_animation_bar.push(song);
+                        song.classList.add('side_bar_songs');
+                        song.style.overflow = 'hidden';
+                        song.style.whiteSpace = 'nowrap';
+                        song.style.cursor = 'pointer';
+                        next_songs_container.append(song);
+                        await new Promise(resolve => setTimeout(resolve, 20));
+                        let next_queued_song_id = order_array[Number(j)];
+                        song.textContent = array[next_queued_song_id].title;
+                    }// this took over half a day...... the problem was not uncorret order, no the order was  100% correct, it just displayed the correct order, wrong. but from the user point of view (even the consle log) it just looked like a wrong read of the order array.
+                    for (let i = 0; i < song_animation_bar.length; i++)
+                    {
+                        let song = song_animation_bar[i];
+                        song.style.opacity = '1';
+                    }
+                }
+            </script>
+        </div>
+        <div id="hide_me" style="padding: 20px; justify-content: center; text-align: center; gap: 20px; display: flex; flex-direction: row; margin-top: 15rem; width: 100%;">
+            <h3>Pages</h3>
+        <ul> 
+            <div  style=" margin-top: 2rem; transform:translateX(-1%);"><a class="main_text" href="game_show.html" style="font-size: xx-large; background: linear-gradient(135deg, #03010c, #150462, #2000d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Game Show</a></div>
+            <div  style=" margin-top: 2rem; transform:translateX(-1%);"><a class="main_text" href="3D deck.html" style="font-size: xx-large; background: linear-gradient(135deg, #d3ba00, #e7ff5f, #ffc964c7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">deck</a></div>            
+        </ul>
+        </div>
+        </body>
+    </html>

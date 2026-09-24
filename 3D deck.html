@@ -1,0 +1,46 @@
+    
+    <html>
+        <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+              crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+              rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐤</text></svg>">
+        <title>3D Deck</title>
+        </head>
+            <body>
+                    <script>
+                    // just to scrol back to the top on start
+                    if ('scrollRestoration' in history) 
+                    {
+                    history.scrollRestoration = 'manual';
+                    }
+                    </script>
+                <main style="height: 100%; width: 100%; background: rgba(255, 255, 255, 0.249);">
+                    <div style="width: 100%; height: 100%;" id="wrapper"> <!-- done with html now (and css is just few words)-->
+                    </div>
+                    <p style="color: rgba(0, 0, 0, 0.426); position: fixed; font-size: medium; bottom: 0%; left: 40%">drag or zoom to interact with the 3D object!</p>
+                </main>   
+                <script type="importmap">
+                {
+                "imports": {
+                    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+                }
+                }
+                </script>
+        <ul> 
+            <div  style=" margin-top: 2rem; transform:translateX(-1%);"><a class="main_text" href="Localafy.html" style="font-size: xx-large; background: linear-gradient(135deg, #b8a5ff, #7d5fff, #00d2d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Localafy</a></div>
+            <div  style=" margin-top: 2rem; transform:translateX(-1%);"><a class="main_text" href="game_show.html" style="font-size: xx-large; background: linear-gradient(135deg, #03010c, #150462, #2000d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Game Show</a></div>
+        </ul>
+                <script type="module" src="3d.js"></script> 
+            </body>
+    </html>
